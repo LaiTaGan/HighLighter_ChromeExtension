@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi-lighter user interface</title>
+    <style>
+        input{
+            width: 60pt;
+            border-radius: 10%;
+            text-align:center;
+            margin: 5px;
+            transform: translate(20px,0px);
+            border-color: black;
+        }
+        #demoUse,#login{
+            background-color: gray;
+            border-radius: 10%;
+            border-color: black;
+            transform: translate(40px,0px);
+            margin: 5px;
+        }
+        #darkMode{
+            border-radius: 60%;
+            border-color: black;
+            transform: translate(40px,10px);
+        }
+      
+    </style>
+</head>
+<body style="background-color: white;"><div class="container">
+    <img src="icons/highlighter.png" style="transform: scale(0.6,0.6);"></img></br>
+
+    <input type="text" placeholder="User Name" id="String"></input></br>
+    <input type="text" placeholder="Passwords" id="Number"></input></br>
+    <button id="login">Login</button></br>
+    <button id="demoUse">Demo</button>
+
+    <button id="darkMode">D</button>
+    </div>
+    <script src="userInterface.js" type="text/javascript"></script>
+</body>
+</html>
