@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try for highlight</title>   
+    <style>
+        button{
+            border-radius: 20%;
+            background-color: brown; color: white;
+            margin: 20px 0px;
+        }
+    </style>
+</head>
+<body style="background-color: rgba(22, 22, 190, 0.781);">
+    <div>
+        <p id="demo" style="color:white">Hello world! This file is prepared for the extension to highlight some text which one that have selected by user. Lastly, the purpose of this HTML file have try to make a JS file and make the connection to the chrome API.</p>
+        <hr>
+        <button id="hiLight">HiLight</button>
+        <button id="erase">Erase</button></br>
+        <img src="Highlight.png"></img>
+    </div>
+
+    <script type="text/javascript">
+        var number=1;
+        const hiLight=document.getElementById("hiLight")
+        const text=document.querySelector('p')
+        let catchtext=null
+        const eraser=document.getElementById("erase")
+
+        text.addEventListener('mouseup',function selectedText(){
+            catchtext=window.getSelection().toString() //use the .trim() if want to remove the space before and after string
+            console.log(catchtext)
+        }) 
+        
+            
+        hiLight.addEventListener('click',function highLight(){
+         // paragraph.setAttribute("style","color: background-color: display: ")
+         // paragraph.style.color='white'
+         // paragraph.style.backgroundColor='red'
+         // paragraph.style.display='inline-block'
+            let paragraph=document.createElement("span")
+            paragraph.innerHTML=catchtext
+            var numbers="number_"+number
+            var realHighlight="<span style= ' color: black ;background-color:yellow;' id='"+numbers+"'>"+paragraph.innerHTML+"</span>"
+            var markedparagraph=text.innerHTML.replace(catchtext,realHighlight)
+            text.innerHTML=markedparagraph
+            console.log(text)
+            console.log(number)
+            number++
+            catchtext=null //reset getSelection()
+        })
+            
+
+        eraser.addEventListener('click',function erase(){
+
+            for(i=0;i<number;i++){
+               document.getElementsByTagName('span')[0].removeAttribute("style")
+                console.log(text)
+            }
+            var spanTag = document.getElementsByTagName('span');
+
+            while(spanTag.length) {
+                var parent = spanTag[ 0 ].parentNode;
+                while( spanTag[ 0 ].firstChild ) {
+                parent.insertBefore(  spanTag[ 0 ].firstChild, spanTag[ 0 ] );
+                }
+                parent.removeChild(spanTag[ 0 ] );
+            }
+            // console.log(copiedSnapText)
+            // var regEx=text.innerHTML.concat(copiedSnapText)
+            // text.innerHTML=regEx
+            // document.getElementById("sample").remove()
+        })
+            
+    </script>
+</body>
+
+</html>
